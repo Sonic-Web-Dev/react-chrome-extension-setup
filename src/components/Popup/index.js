@@ -1,10 +1,8 @@
 import React from 'react'
 import { HashRouter as Router, Route } from 'react-router-dom'
-import Header from '../components/Header'
-import Home from '../components/Home'
-import Footer from '../components/Footer'
-
-
+import Header from './Header'
+import Home from './Home'
+import Footer from './Footer'
 
 export default class Popup extends React.Component {
   constructor(props) {

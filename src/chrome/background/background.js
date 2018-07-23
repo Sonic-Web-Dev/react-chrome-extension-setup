@@ -1,5 +1,5 @@
-import deferredStateStorage from './utils/deferredStateStorage'
-import defaultState from './defaults'
+import deferredStateStorage from '../../utils/deferredStateStorage'
+import defaultState from '../../defaults'
 
 chrome.storage.local.get(storedState => {
   const storage = deferredStateStorage()

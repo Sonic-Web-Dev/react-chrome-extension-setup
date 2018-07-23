@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/Header'
+
 
 export default class Setup extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class Setup extends Component {
 
   render() {
     return (
-      <p>this is a test page </p>
+      <p>This is a test page that can be opened in its own window or iframe </p>
     )
   }
 }

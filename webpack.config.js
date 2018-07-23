@@ -1,15 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: {
-    popup: './src/popup.js',
-    setup: './src/setup.js',
-    background: './src/background.js'
+    popup: './src/chrome/popup.js',
+    setup: './src/chrome/setup.js',
+    background: './src/chrome/background/background.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -34,13 +33,6 @@ module.exports = {
           "css-loader"
         ]
       },
-      /*{
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader'
-        })
-      },*/
       {
         test: /\.(ico|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
         use: 'file-loader?limit=100000'
@@ -68,7 +60,6 @@ module.exports = {
     modules: false
   },
   plugins: [
-    //new ExtractTextPlugin('bundle.css'),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
@@ -77,17 +68,17 @@ module.exports = {
       inject: true,
       chunks: ['popup'],
       filename: 'popup.html',
-      template: './src/popup.html'
+      template: './src/chrome/popup.html'
     }),
     new HtmlWebpackPlugin({
       inject: true,
       chunks: ['setup'],
       filename: 'setup.html',
-      template: './src/setup.html'
+      template: './src/chrome/setup.html'
     }),
     // copy extension manifest and icons
     new CopyWebpackPlugin([
-      { from: './src/manifest.json' },
+      { from: './src/chrome/manifest.json' },
       { context: './src/assets', from: 'icon-**', to: 'assets' }
     ])
   ]
